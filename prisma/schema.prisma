@@ -22,7 +22,7 @@ model User {
 model Profile {
   id Int @id @default(autoincrement())
   identify_type String
-  identify_number Int
+  identify_number String
   address String
   user User @relation(fields: [userId], references: [id])
   userId Int @unique
@@ -31,7 +31,7 @@ model Profile {
 model BankAccount {
   id Int @id @default(autoincrement())
   bank_name String
-  account_number Int @unique
+  account_number String @unique
   balance Float
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt @default(now())
@@ -48,6 +48,6 @@ model Transaction {
   amount Float
   type String
   trx_date DateTime
-  sourceAccount BankAccount @relation( name: "source", fields: [source_account_id], references: [account_number])
-  destinationAccount BankAccount @relation( name: "destination", fields: [destination_account_id], references: [account_number])
+  sourceAccount BankAccount @relation( name: "source", fields: [source_account_id], references: [id])
+  destinationAccount BankAccount @relation( name: "destination", fields: [destination_account_id], references: [id])
 }

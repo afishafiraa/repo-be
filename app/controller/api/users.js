@@ -8,7 +8,12 @@ module.exports = {
         const { search, page, limit } = req.query;
         console.log(req.query);
 
-        let result = await prisma.user.findMany(search, page, limit)
+        let result = await prisma.user.findMany({
+                orderBy:{
+                    id : 'asc',
+                },
+            },
+            search, page, limit)
         if(!result.length) {
             return res.status(200).json({
                 status: 'success',
@@ -46,8 +51,19 @@ module.exports = {
         })
     },
     async create(req, res){
+        const { email, name, password, profile } = req.body
+
         const user = await prisma.user.create({
-            data: req.body
+            email : req.body.email,
+            name : req.body.name,
+            password : req.body.password,
+            profile: {
+                create:{
+                "identify_type" : req.body.identify_type,
+                "identify_number" : req.body.identify_number,
+                "address" : req.body.address,
+                },
+            },
         });
 
         console.log(user);
@@ -59,10 +75,17 @@ module.exports = {
             data : user
         })
     },
-    async update(){
+    async update(req, res){
+        const { name, email, password } = req.body
         const user = await prisma.user.update({
-            data:req.body,
-            id:req.params.id
+            where: {
+                id: Number(req.params.id)
+            },
+            data: {
+                name,
+                email,
+                password,
+            },
         })
     
         res.status(200).json({
@@ -79,7 +102,11 @@ module.exports = {
             message: 'Bad request! id is required'
         })
     
-        const user = await model.destroy(req.params.id);
+        const user = await prisma.user.delete({
+            where: {
+                id : Number(req.params.id)
+            }
+        });
     
         res.status(200).json({
             status : 'success',

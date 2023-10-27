@@ -4,6 +4,7 @@ const router = express.Router();
 const controller = require('../app/controller')
 
 router.get('/users', controller.users.get)
+router.get('/userdetail', controller.users.getProfile)
 router.get('/users/:id', controller.users.getById)
 router.post('/users/', controller.users.create)
 router.put('/users/:id', controller.users.update)

@@ -3,7 +3,7 @@ const router = express.Router();
 // const { get, getById, create, destroy } = require('../app/controller/users')
 const controller = require('../app/controller')
 
-router.get('/profiles', controller.profiles.get)
-router.post('/profiles', controller.profiles.create)
+router.get('/transactions', controller.transactions.get)
+router.post('/transactions', controller.transactions.create)
 
 module.exports = router;

@@ -7,7 +7,7 @@ module.exports = {
         const { search, page, limit } = req.query;
         console.log(req.query);
 
-        let result = await prisma.profile.findMany({
+        let result = await prisma.bankAccount.findMany({
                 orderBy:{
                     id : 'asc',
                 },
@@ -28,9 +28,8 @@ module.exports = {
             data : result
         })
     },
-    
     async create(req, res){
-        const profile = await prisma.profile.create({
+        const profile = await prisma.bankAccount.create({
             data: req.body
         }); 
 
