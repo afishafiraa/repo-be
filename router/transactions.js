@@ -4,6 +4,7 @@ const router = express.Router();
 const controller = require('../app/controller')
 
 router.get('/transactions', controller.transactions.get)
+router.get('/transactions/:d', controller.transactions.getById)
 router.post('/transactions', controller.transactions.create)
 
 module.exports = router;

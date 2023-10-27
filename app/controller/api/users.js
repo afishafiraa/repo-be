@@ -51,7 +51,7 @@ module.exports = {
         })
     },
     async create(req, res){
-        const { email, name, password, profile } = req.body
+        // const { email, name, password, profile } = req.body
 
         const user = await prisma.user.create({
             email : req.body.email,

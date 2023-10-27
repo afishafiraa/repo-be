@@ -42,4 +42,27 @@ module.exports = {
             data : profile
         })
     },
+    async getById(req, res){
+        if(!req.params.id) return res.status(400).json({
+            status: 'fail',
+            code: 400,
+            message: 'Bad request! id is required'
+        })
+        
+        const user = await prisma.bankAccount.findUnique({
+            where: {
+                id : Number(req.params.id)
+            },
+            include: {
+                user: true,
+            },
+        });
+
+        return res.status(200).json({
+            status : 'success',
+            code : 200,
+            message : 'Success!',
+            data : user
+        })
+    },
 }

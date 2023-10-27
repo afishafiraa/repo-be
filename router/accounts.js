@@ -5,5 +5,6 @@ const controller = require('../app/controller')
 
 router.get('/accounts', controller.accounts.get)
 router.post('/accounts', controller.accounts.create)
+router.get('/accounts/:id', controller.accounts.getById)
 
 module.exports = router;
