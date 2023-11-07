@@ -1,5 +1,3 @@
-
-
 # This was inserted by `prisma init`:
 # Environment variables declared in this file are automatically made available to Prisma.
 # See the documentation for more detail: https://pris.ly/d/prisma-schema#accessing-environment-variables-from-the-schema
@@ -9,5 +7,5 @@
 
 DATABASE_URL="postgresql://postgres:shafira88@localhost:5432/system_bank?schema=public"
 JWT_SECRET_KEY ="verysecretKey456"
-GOOGLE_CLIENT_ID = "883912798983-ko1tk4qcl5lck002hn41dvsc5c5sejff.apps.googleusercontent.com"
-GOOGLE_CLIENT_SECRET = "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"
+GOOGLE_CLIENT_ID = ""
+GOOGLE_CLIENT_SECRET = ""
