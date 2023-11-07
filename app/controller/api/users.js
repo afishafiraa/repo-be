@@ -43,6 +43,14 @@ module.exports = {
             }
         });
 
+        if(!user){
+            return res.status(200).json({
+                status : 'success',
+                code : 200,
+                message : 'Data Empty!',
+            })
+        }
+
         return res.status(200).json({
             status : 'success',
             code : 200,
@@ -54,16 +62,7 @@ module.exports = {
         // const { email, name, password, profile } = req.body
 
         const user = await prisma.user.create({
-            email : req.body.email,
-            name : req.body.name,
-            password : req.body.password,
-            profile: {
-                create:{
-                "identify_type" : req.body.identify_type,
-                "identify_number" : req.body.identify_number,
-                "address" : req.body.address,
-                },
-            },
+            data : req.body
         });
 
         console.log(user);

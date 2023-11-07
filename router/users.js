@@ -2,13 +2,15 @@ const express = require('express');
 const router = express.Router();
 // const { get, getById, create, destroy } = require('../app/controller/users')
 const controller = require('../app/controller')
+const { auth } = 
+    require('../utils/jwt')
 
-router.get('/users', controller.users.get)
-router.get('/userdetail', controller.users.getProfile)
-router.get('/users/:id', controller.users.getById)
-router.post('/users/', controller.users.create)
-router.put('/users/:id', controller.users.update)
-router.delete('/users/:id', controller.users.destroy)
+router.get('/api/users', controller.users.get)
+router.get('/api/userdetail', controller.users.getProfile)
+router.get('/api/users/:id', controller.users.getById)
+router.post('/api/users/', auth, controller.users.create)
+router.put('/api/users/:id', controller.users.update)
+router.delete('/api/users/:id', controller.users.destroy)
 
 // router.get('/v2/users', controller.usersV2.get)
 // router.get('/v2/users/:id', controller.usersV2.getById)
