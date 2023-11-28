@@ -21,6 +21,9 @@ router.post('/register', controller.auth.registerForm)
 router.get('/login', (req, res) => {
     res.render('login.ejs')              //render untuk menampilkan html/view engine
 })
+router.get('/forgetpassword', (req, res) => {
+    res.render('forgetpassword.ejs')              //render untuk menampilkan html/view engine
+})
 //integrasikan passport ke router
 router.post('/login', passport.authenticate('local',{
     successRedirect: '/dashboard',
