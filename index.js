@@ -18,7 +18,12 @@ const morgan = require('morgan')
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        
+        type: 'OAuth2',
+        user: process.env.GMAIL_USERNAME,
+        pass: process.env.GMAIL_PASSWORD,
+        clientId: '883912798983-go69enkdb5gl1vgmtqjb658v3und6t4b.apps.googleusercontent.com',
+        clientSecret: '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',
+        refreshToken: '1//04wN9MtbPeMkxCgYIARAAGAQSNwF-L9Irdo0hiHAVxWBWET-PhfFo0CWE9vtyHK2ciYBOBjh6teUkdt1VYxX6MK0_F7VsTJEas5M'
     }
 }) 
 app.use(express.json()) //req.body untuk json
